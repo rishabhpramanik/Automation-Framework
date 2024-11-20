@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -13,6 +14,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+
+import com.Utility.ReportManager;
 
 public class BaseClass {
 	public static Properties prop;
@@ -34,10 +37,10 @@ public class BaseClass {
 		 */
 		
 		//Setting up the Extent Report
-//		ReportManager.setExtentReport();
+		ReportManager.setExtentReport();
 		
 		//Setting up the Logger
-//		DOMConfigurator.configure();
+		DOMConfigurator.configure("log4j.xml");
 		
 		//Loading the Configuration file
 		try {
@@ -89,7 +92,7 @@ public class BaseClass {
 	
 	@AfterSuite
 	public void tearDown() {
-		ReportManager.flush();
+		ReportManager.endReport();
 	}
 
 }

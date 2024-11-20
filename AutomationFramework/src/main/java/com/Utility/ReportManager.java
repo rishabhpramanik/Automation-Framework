@@ -1,4 +1,4 @@
-package Utility;
+package com.Utility;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -10,7 +10,7 @@ public class ReportManager {
 	public static ExtentReports reports;
 	public static ExtentTest test;
 
-	public static void setExtent() {
+	public static void setExtentReport() {
 		/*
 		 * Initialize the spark reporter and provide the report path
 		 * Configure the report details
@@ -19,7 +19,7 @@ public class ReportManager {
 		 */
 
 		//Initializng the SparkReporter
-		sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "\\Reports\\TestReport");
+		sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "\\test-output\\ExtentReports\\TestReport");
 
 		//Configuring the report details
 		sparkReporter.config().setTheme(Theme.STANDARD);
