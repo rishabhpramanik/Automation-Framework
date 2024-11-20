@@ -22,4 +22,9 @@ public class OrderPage extends BaseClass {
 	public OrderPage() {
 		PageFactory.initElements(getDriver(), this);
 	}
+	
+	public double calculateTotalPrice() {
+		double unitPrice = 
+		
+	}
 }

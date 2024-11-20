@@ -90,6 +90,10 @@ public class HomePage extends BaseClass {
 	}
 	
 	//Add method to navigate to contacts page
+	public ContactPage navigateToContactPage() {
+		contactUs.click();
+		return new ContactPage();
+	}
 	
 	//Add method to navigate to main page after logout
 	

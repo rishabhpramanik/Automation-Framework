@@ -22,4 +22,9 @@ public class ActionClass {
 	    }catch(Exception e) {
 	    }
 	}
+	
+	//Converting the string to double
+	public void stringToDouble(WebDriver driver, WebElement element) {
+		String stringValue = element.getText();
+	}
 }
