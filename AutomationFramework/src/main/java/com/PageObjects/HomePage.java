@@ -70,10 +70,35 @@ public class HomePage extends BaseClass {
 		personalInformation.click();
 	}
 	
+	public String getHomePageUrl() {
+		String url = getDriver().getCurrentUrl();
+		return url;
+	}
+	
 	public SearchResultPage search(String items) {
 		searchBar.sendKeys(items);
 		searchButton.click();
 		return new SearchResultPage();
+	}
+
+	public boolean validatePersonalInformation() {
+		boolean response = personalInformation.isDisplayed();
+		return response;
+	}
+
+	public boolean validateOrderHistory() {
+		boolean response = orderHistory.isDisplayed();
+		return response;
+	}
+
+	public boolean validateMyAddresses() {
+		boolean response = myAddresses.isDisplayed();
+		return response;
+	}
+
+	public boolean validateLogoutButton() {
+		boolean response = signOut.isDisplayed();
+		return response;
 	}
 	
 	//Add method to navigate to main page after logout

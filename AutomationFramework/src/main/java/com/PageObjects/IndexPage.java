@@ -46,4 +46,25 @@ public class IndexPage extends BaseClass {
 		signinButton.click();
 		return new LoginPage();
 	}
+	
+	public boolean isLogoDisplayed() {
+		boolean response = logoElement.isDisplayed();
+		return response;
+	}
+	
+	public String getPageTitle() {
+		String title = getDriver().getTitle();
+		return title;
+	}
+	
+	public String getPageUrl() {
+		String url = getDriver().getCurrentUrl();
+		return url;
+	}
+	
+	public String loadLoginPage() {
+		signinButton.click();
+		String url = getDriver().getCurrentUrl();
+		return url;
+	}
 }

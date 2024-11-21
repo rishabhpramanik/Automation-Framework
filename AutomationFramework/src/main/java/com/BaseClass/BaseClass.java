@@ -91,7 +91,7 @@ public class BaseClass {
 	}
 	
 	@AfterSuite
-	public void tearDown() {
+	public void afterSuite() {
 		ReportManager.endReport();
 	}
 
