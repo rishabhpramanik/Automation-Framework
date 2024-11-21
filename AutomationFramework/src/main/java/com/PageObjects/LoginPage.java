@@ -47,8 +47,9 @@ public class LoginPage extends BaseClass{
 		emailAddressField.sendKeys(email);
 	}
 	
-	public void clickCreationButton() {
+	public AccountCreationPage clickCreationButton() {
 		createAccountBtn.click();
+		return new AccountCreationPage();
 	}
 	
 	public void clickHomeButton() {

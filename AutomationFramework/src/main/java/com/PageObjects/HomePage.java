@@ -9,10 +9,7 @@ import com.BaseClass.BaseClass;
 public class HomePage extends BaseClass {
 	@FindBy(xpath = "//span[@class='shop-phone']")
 	WebElement contactDetails;
-	
-	@FindBy(xpath = "//a[@title='Contact us']")
-	WebElement contactUs;
-	
+		
 	@FindBy(xpath = "//a[@title='Log me out']")
 	WebElement signOut;
 	
@@ -49,18 +46,8 @@ public class HomePage extends BaseClass {
 	@FindBy(xpath = "//section[@id='block_contact_infos']//li[1]")
 	WebElement storeAddress;
 	
-	@FindBy(xpath = "//span[normalize-space()='0123-456-789']")
-	WebElement contactInfo;
-	
-	@FindBy(xpath = "//a[normalize-space()='sales@yourcompany.com']")
-	WebElement emailInfo;
-	
 	public HomePage() {
 		PageFactory.initElements(getDriver(), this);
-	}
-	
-	public void goToContact() {
-		contactUs.click();
 	}
 	
 	public void signout() {
@@ -87,12 +74,6 @@ public class HomePage extends BaseClass {
 		searchBar.sendKeys(items);
 		searchButton.click();
 		return new SearchResultPage();
-	}
-	
-	//Add method to navigate to contacts page
-	public ContactPage navigateToContactPage() {
-		contactUs.click();
-		return new ContactPage();
 	}
 	
 	//Add method to navigate to main page after logout
