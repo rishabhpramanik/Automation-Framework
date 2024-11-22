@@ -74,7 +74,7 @@ public class EndToEndTest extends BaseClass{
 		
 		//Getting the confirmation message from the Confirmation page
 		String actualMessage = confirmationPage.getConfirmationMessage();
-		String expectedMsg = "Your order on My Store is complete.";
+		String expectedMsg = "Your order on My Shop is complete.";
 		Assert.assertEquals(actualMessage, expectedMsg);
 		Logs.endTestCase("endToEndTest");
 	}

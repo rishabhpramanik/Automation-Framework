@@ -22,7 +22,7 @@ public class OrderPage extends BaseClass {
 	@FindBy(id = "total_price")
 	WebElement totalPrice;
 	
-	@FindBy(xpath = "//a[@title='Proceed to checkout']")
+	@FindBy(xpath = "//a[@class='button btn btn-default standard-checkout button-medium']//span[contains(text(),'Proceed to checkout')]")
 	WebElement proceedToCheckoutButton;
 	
 	@FindBy(xpath = "//p[@class='fancybox-error']")
