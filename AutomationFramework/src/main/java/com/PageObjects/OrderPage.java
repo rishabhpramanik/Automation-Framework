@@ -59,9 +59,8 @@ public class OrderPage extends BaseClass {
 		return message;
 	}
 	
-	public AddressPage clickProceedButton() {
+	public LoginPage clickProceedButton() {
 		proceedToCheckoutButton.click();
-		return new AddressPage();
+		return new LoginPage();
 	}
-	
 }

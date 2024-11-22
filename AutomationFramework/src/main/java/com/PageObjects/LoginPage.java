@@ -35,11 +35,20 @@ public class LoginPage extends BaseClass{
 	}
 	
 	//Methods to perform actions on Web elements
-	public HomePage login(String email, String pass) {
+	public AddressPage login(String email, String pass, AddressPage addressPage) {
 		emailField.sendKeys(email);
 		passwordField.sendKeys(pass);
 		signInBtn.click();
-		return new HomePage();
+		addressPage = new AddressPage();
+		return addressPage;
+	}
+	
+	public HomePage login(String email, String pass, HomePage homePage) {
+		emailField.sendKeys(email);
+		passwordField.sendKeys(pass);
+		signInBtn.click();
+		homePage = new HomePage();
+		return homePage;
 	}
 	
 	//Combine the below methods to create account

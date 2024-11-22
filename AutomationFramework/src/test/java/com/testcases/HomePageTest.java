@@ -20,7 +20,7 @@ public class HomePageTest extends BaseClass {
 		Logs.startTestCase("PersonalInformationTest");
 		indexPage= new IndexPage();
 		loginPage=indexPage.clickOnSignin();
-		homePage=loginPage.login(uname,pswd);
+		homePage=loginPage.login(uname,pswd,homePage);
 		boolean result=homePage.validatePersonalInformation();
 		Assert.assertTrue(result);
 		Logs.endTestCase("PersonalInformationTest");
@@ -31,7 +31,7 @@ public class HomePageTest extends BaseClass {
 		Logs.startTestCase("orderHistoryandDetailsTest");
 		indexPage= new IndexPage();
 		loginPage=indexPage.clickOnSignin();
-		homePage=loginPage.login(uname,pswd);
+		homePage=loginPage.login(uname,pswd,homePage);
 		boolean result=homePage.validateOrderHistory();
 		Assert.assertTrue(result);
 		Logs.endTestCase("orderHistoryandDetailsTest");
@@ -42,7 +42,7 @@ public class HomePageTest extends BaseClass {
 		Logs.startTestCase("myAddressesTest");
 		indexPage= new IndexPage();
 		loginPage=indexPage.clickOnSignin();
-		homePage=loginPage.login(uname,pswd);
+		homePage=loginPage.login(uname,pswd,homePage);
 		boolean result=homePage.validateMyAddresses();
 		Assert.assertTrue(result);
 		Logs.endTestCase("myAddressesTest");
@@ -53,7 +53,7 @@ public class HomePageTest extends BaseClass {
 		Logs.startTestCase("logoutButtonVisiblilityTest");
 		indexPage= new IndexPage();
 		loginPage=indexPage.clickOnSignin();
-		homePage=loginPage.login(uname,pswd);
+		homePage=loginPage.login(uname,pswd,homePage);
 		boolean result=homePage.validateLogoutButton();
 		Assert.assertTrue(result);
 		Logs.endTestCase("logoutButtonVisibilityTest");

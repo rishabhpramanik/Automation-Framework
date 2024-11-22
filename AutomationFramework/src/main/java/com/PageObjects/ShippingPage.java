@@ -8,13 +8,13 @@ import com.BaseClass.BaseClass;
 
 public class ShippingPage extends BaseClass {
 	@FindBy(xpath = "//span[normalize-space()='Back to your account']")
-	WebElement backToAccountButton;
+	private WebElement backToAccountButton;
 	
 	@FindBy(xpath = "//input[@type='checkbox']")
-	WebElement termsCheckbox;
+	private WebElement termsCheckbox;
 	
 	@FindBy(xpath = "//button[@name='processCarrier']")
-	WebElement proceedButton;
+	private WebElement proceedButton;
 	
 	public ShippingPage() {
 		PageFactory.initElements(getDriver(), this);
@@ -28,5 +28,9 @@ public class ShippingPage extends BaseClass {
 		proceedButton.click();
 		return new PaymentPage();
 	}
-
+	
+	public boolean validateTermsAndConditions() {
+		boolean response = termsCheckbox.isDisplayed();
+		return response;
+	}
 }

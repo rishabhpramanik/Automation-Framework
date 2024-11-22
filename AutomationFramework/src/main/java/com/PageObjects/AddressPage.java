@@ -11,43 +11,49 @@ public class AddressPage extends BaseClass {
 	ActionClass action = new ActionClass();
 	
 	@FindBy(id = "firstname")
-	WebElement firstnameField;
+	private WebElement firstnameField;
 	
 	@FindBy(id = "lastname")
-	WebElement lastnameField;
+	private WebElement lastnameField;
 	
 	@FindBy(id = "company")
-	WebElement companyField;
+	private WebElement companyField;
 	
 	@FindBy(id = "address1")
-	WebElement addressField;
+	private WebElement addressField;
 	
 	@FindBy(id = "city")
-	WebElement cityField;
+	private WebElement cityField;
 	
 	@FindBy(id = "id_state")
-	WebElement stateField;
+	private WebElement stateField;
 	
 	@FindBy(id = "postcode")
-	WebElement postcodeField;
+	private WebElement postcodeField;
 	
 	@FindBy(id = "id_country")
-	WebElement countryField;
+	private WebElement countryField;
 	
 	@FindBy(id = "phone")
-	WebElement phoneNumberField;
+	private WebElement phoneNumberField;
 	
 	@FindBy(id = "phone_mobile")
-	WebElement mobilePhoneField;
+	private WebElement mobilePhoneField;
 	
 	@FindBy(id = "alias")
-	WebElement aliasField;
+	private WebElement aliasField;
 	
 	@FindBy(id = "submitAddress")
-	WebElement saveButton;
+	private WebElement saveButton;
 	
 	@FindBy(xpath = "//button[@name='processAddress']")
-	WebElement proceedButton;
+	private WebElement proceedButton;
+	
+	@FindBy(xpath = "//*[text()='Your delivery address']")
+	private WebElement savedAddressLocator;
+	
+	@FindBy(xpath = "//a[@title='Add an address']")
+	private WebElement addNewAddressButton;
 		
 	public AddressPage() {
 		PageFactory.initElements(getDriver(), this);
@@ -106,5 +112,39 @@ public class AddressPage extends BaseClass {
 	public ShippingPage clickProceed() {
 		proceedButton.click();
 		return new ShippingPage();
+	}
+	
+	public boolean validateAddressPage() {
+		boolean response = savedAddressLocator.isDisplayed();
+		return response;
+	}
+	
+	public void clickAddNewAddress() {
+		addNewAddressButton.click();
+	}
+	
+	public void addAddress(String fName, 
+			String lName,
+			String company,
+			String address,
+			String city,
+			String state,
+			String postCode,
+			String country,
+			String homeNumber,
+			String mobileNumber,
+			String aliasName) {
+		firstnameField.sendKeys(fName);
+		lastnameField.sendKeys(lName);
+		companyField.sendKeys(company);
+		addressField.sendKeys(address);
+		cityField.sendKeys(city);
+		action.selectByVisibleText(stateField, state);
+		postcodeField.sendKeys(postCode);
+		action.selectByVisibleText(countryField, country);
+		phoneNumberField.sendKeys(homeNumber);
+		mobilePhoneField.sendKeys(mobileNumber);
+		aliasField.clear();
+		aliasField.sendKeys(aliasName);
 	}
 }

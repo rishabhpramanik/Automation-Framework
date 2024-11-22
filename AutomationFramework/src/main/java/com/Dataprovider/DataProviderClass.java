@@ -111,6 +111,30 @@ public class DataProviderClass {
 		}
 		return data;
 	}
+	
+	@DataProvider(name = "newAddressData")
+	public Object[][] newAddress() {
+		//Using ExcelLibrary object to access the cell data
+		// Totals rows count
+		int rows = obj.getRowCount("AddressDetails");
+		// Total Columns
+		int column = obj.getColumnCount("AddressDetails");
+		int actRows = rows - 1;
+		
+		//Created an object of array to store data
+		Object[][] data = new Object[actRows][1];
+
+		for (int i = 0; i < actRows; i++) {
+			//Creating a key value pair of data
+			Map<String, String> hashMap = new HashMap<>();
+			for (int j = 0; j < column; j++) {
+				hashMap.put(obj.getCellData("AddressDetails", j, 1),
+						obj.getCellData("AddressDetails", j, i + 2));
+			}
+			data[i][0] = hashMap;
+		}
+		return data;
+	}
 
 }
 

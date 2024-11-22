@@ -32,7 +32,7 @@ public class LoginPageTest extends BaseClass {
 		loginPage=indexPage.clickOnSignin();
 		Logs.info("Enter Username and Password");
 	    
-		homePage=loginPage.login(uname,pswd);
+		homePage=loginPage.login(uname,pswd,homePage);
 		
 	    String actualURL = homePage.getHomePageUrl();
 	    String expectedURL="http://automationpractice.com/index.php?controller=my-account";
