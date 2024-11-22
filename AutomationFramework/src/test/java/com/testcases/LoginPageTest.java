@@ -14,9 +14,9 @@ import com.PageObjects.LoginPage;
 import com.Utility.Logs;
 
 public class LoginPageTest extends BaseClass {
-	public static IndexPage indexPage;
-	public static LoginPage loginPage;
-	public static HomePage homePage;
+	private IndexPage indexPage;
+	private LoginPage loginPage;
+	private HomePage homePage;
 	
 	@Parameters("browser")
 	@BeforeMethod(groups = {"Smoke","Sanity","Regression"})

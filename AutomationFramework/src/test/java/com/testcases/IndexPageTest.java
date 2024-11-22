@@ -8,13 +8,11 @@ import org.testng.annotations.Test;
 
 import com.BaseClass.BaseClass;
 import com.PageObjects.IndexPage;
-import com.PageObjects.LoginPage;
 import com.Utility.Logs;
 
 public class IndexPageTest extends BaseClass {
-	public static IndexPage indexPage;
-	public static LoginPage loginPage;
-	
+	private IndexPage indexPage;
+		
 	@Parameters("browser")
 	@BeforeMethod(groups = {"Smoke","Sanity","Regression"})
 	public void setup(String browser) {

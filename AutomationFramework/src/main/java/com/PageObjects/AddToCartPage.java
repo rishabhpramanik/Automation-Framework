@@ -3,11 +3,13 @@ package com.PageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
+import com.ActionClass.ActionClass;
 import com.BaseClass.BaseClass;
 
 public class AddToCartPage extends BaseClass {
+	ActionClass action = new ActionClass();
+	
 	@FindBy(id = "group_1")
 	WebElement sizeSelection;
 	
@@ -26,11 +28,6 @@ public class AddToCartPage extends BaseClass {
 	@FindBy(xpath = "//h2[normalize-space()='Product successfully added to your shopping cart']")
 	WebElement cartMessage;
 	
-	public void select(WebElement element, String text) {
-		Select select = new Select(element);
-		select.selectByVisibleText(text);		
-	}
-	
 	public AddToCartPage() {
 		PageFactory.initElements(getDriver(), this);
 	}
@@ -44,7 +41,7 @@ public class AddToCartPage extends BaseClass {
 	}
 	
 	public void selectSize(String size) {
-		select(sizeSelection, size);
+		action.selectByVisibleText(sizeSelection, size);
 	}
 	
 	public void clickAddToCart() {

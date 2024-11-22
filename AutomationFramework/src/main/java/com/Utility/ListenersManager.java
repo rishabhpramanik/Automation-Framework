@@ -23,7 +23,7 @@ public class ListenersManager extends ReportManager implements ITestListener{
 	//Overriding the ITestListeners methods
 	//Creating the test using test name
 	public void onTestStart(ITestResult result) {
-		test = reports.createTest(result.getTestName());
+		test = reports.createTest(result.getName());
 	}
 	
 	//On test success 
@@ -36,11 +36,11 @@ public class ListenersManager extends ReportManager implements ITestListener{
 	//On test failure or exception thrown
 	public void onTestFailure(ITestResult result) {
 		if(result.getStatus() == ITestResult.FAILURE) {
-			test.log(Status.FAIL, MarkupHelper.createLabel(result.getTestName() + " failed", ExtentColor.RED));
+			test.log(Status.FAIL, MarkupHelper.createLabel(result.getName() + " failed", ExtentColor.RED));
 			test.log(Status.FAIL, MarkupHelper.createLabel(result.getThrowable() + " failed", ExtentColor.RED));
 			
 			//Capturing the screenshot where the test fails
-			String imgPath = takeScreenshot(BaseClass.getDriver(), result.getTestName());
+			String imgPath = takeScreenshot(BaseClass.getDriver(), result.getName());
 			test.fail("ScreenShot is Attached", MediaEntityBuilder.createScreenCaptureFromPath(imgPath).build());
 		}
 	}
@@ -48,7 +48,7 @@ public class ListenersManager extends ReportManager implements ITestListener{
 	//On test skipped
 	public void onTestSkipped(ITestResult result) {
 		if(result.getStatus() == ITestResult.SKIP) {
-			test.log(Status.SKIP, MarkupHelper.createLabel(result.getTestName() + " skipped", ExtentColor.YELLOW));
+			test.log(Status.SKIP, MarkupHelper.createLabel(result.getName() + " skipped", ExtentColor.YELLOW));
 		}
 	}
 	

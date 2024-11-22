@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
-import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -29,23 +28,23 @@ public class BaseClass {
 	}
 	
 	@BeforeSuite
-	public void setup() {
+	public void loadConfig() {
 		/*
 		 * Setup the Extent Report to save the report
-		 * Configure the Logging mechanism
+		 * Configure the Logger
 		 * Read the configuration file and load the configuration file
 		 */
 		
 		//Setting up the Extent Report
 		ReportManager.setExtentReport();
 		
-		//Setting up the Logger
-		DOMConfigurator.configure("log4j.xml");
+//		//Configure the logger
+//		DOMConfigurator.configure("log4j.xml");
 		
-		//Loading the Configuration file
+		//Loading the Configuration file and reading the values
 		try {
 				prop = new Properties();
-				FileInputStream fip = new FileInputStream(System.getProperty("user.dir") + "\\Configuration\\config.xml");
+				FileInputStream fip = new FileInputStream(System.getProperty("user.dir") + "\\Configuration\\Config.properties");
 				prop.load(fip);
 		}catch(FileNotFoundException e) {
 			e.printStackTrace();
@@ -83,14 +82,11 @@ public class BaseClass {
 		//Implicit Timeouts
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		
-		//PageLoad Timeouts
-		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
-		
 		//Lauching the URL
 		getDriver().get(prop.getProperty("url"));
 	}
 	
-	@AfterSuite
+	@AfterSuite(groups = { "Smoke", "Regression","Sanity" })
 	public void afterSuite() {
 		ReportManager.endReport();
 	}

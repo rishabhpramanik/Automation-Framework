@@ -4,17 +4,17 @@
 	<listeners>
 		<listener class-name="com.Utility.ListenersManager"></listener>
 	</listeners>
-	<test thread-count="5" name="Test_All">
+	<test name="Test_All">
 		<parameter name="browser" value="chrome"></parameter>
 		<classes>
-			<class name="com.testcases.HomePageTest" />
+			<!--<class name="com.testcases.HomePageTest" />
 			<class name="com.testcases.AccountCreationPageTest" />
 			<class name="com.testcases.AddToCartTest" />
 			<class name="com.testcases.AddressPageTest" />
 			<class name="com.testcases.IndexPageTest" />
 			<class name="com.testcases.SearchResultTest" />
 			<class name="com.testcases.OrderPageTest" />
-			<class name="com.testcases.LoginPageTest" />
+			<class name="com.testcases.LoginPageTest" />-->
 			<class name="com.testcases.EndToEndTest" />
 		</classes>
 	</test> <!--

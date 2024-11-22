@@ -51,8 +51,9 @@ public class EndToEndTest extends BaseClass{
 		addToCartPage=searchResultPage.clickOnProduct();
 		
 		//Adding the product into cart
-		addToCartPage.enterQuantity(qty);
 		addToCartPage.selectSize(size);
+		addToCartPage.enterQuantity(qty);
+		
 		addToCartPage.clickAddToCart();
 		orderPage = addToCartPage.clickCheckoutButton();
 		
