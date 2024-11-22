@@ -90,22 +90,24 @@ public class DataProviderClass {
 
 	@DataProvider(name = "newAcountDetailsData")
 	public Object[][] accountCreation() {
-
+		//Using ExcelLibrary object to access the cell data
 		// Totals rows count
 		int rows = obj.getRowCount("AccountCreationData");
 		// Total Columns
 		int column = obj.getColumnCount("AccountCreationData");
 		int actRows = rows - 1;
+		
 		//Created an object of array to store data
 		Object[][] data = new Object[actRows][1];
 
 		for (int i = 0; i < actRows; i++) {
+			//Creating a key value pair of data
 			Map<String, String> hashMap = new HashMap<>();
 			for (int j = 0; j < column; j++) {
 				hashMap.put(obj.getCellData("AccountCreationData", j, 1),
 						obj.getCellData("AccountCreationData", j, i + 2));
 			}
-			data[i][0]=hashMap;
+			data[i][0] = hashMap;
 		}
 		return data;
 	}

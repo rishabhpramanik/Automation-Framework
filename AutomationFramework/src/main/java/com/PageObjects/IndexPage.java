@@ -22,6 +22,12 @@ public class IndexPage extends BaseClass {
 	@FindBy(xpath = "//a[@class='login']")
 	WebElement signinButton;
 	
+	@FindBy(id ="search_query_top")
+	WebElement searchBar;
+	
+	@FindBy(name = "submit_search")
+	WebElement searchButton;
+	
 	
 	public IndexPage() {
 		PageFactory.initElements(getDriver(), this);
@@ -66,5 +72,16 @@ public class IndexPage extends BaseClass {
 		signinButton.click();
 		String url = getDriver().getCurrentUrl();
 		return url;
+	}
+	
+	public LoginPage clickSignIn() {
+		signinButton.click();
+		return new LoginPage();
+	}
+	
+	public SearchResultPage searchProduct(String productName) {
+		searchBar.sendKeys(productName);
+		searchButton.click();
+		return new SearchResultPage();
 	}
 }

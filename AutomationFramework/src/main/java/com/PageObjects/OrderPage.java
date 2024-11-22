@@ -34,9 +34,9 @@ public class OrderPage extends BaseClass {
 	
 	public Double getCalculatedPrice() {
 		//Converting the String value to Double value
-		double unitPriceValue = actions.stringToDouble(getDriver(), unitPrice);
-		double quantityValue = actions.stringToDouble(getDriver(), quantity);
-		double shippingValue = actions.stringToDouble(getDriver(), shippingPrice);
+		double unitPriceValue = actions.stringToDouble(unitPrice);
+		double quantityValue = actions.stringToDouble(quantity);
+		double shippingValue = actions.stringToDouble(shippingPrice);
 		
 		//Calculating the total price
 		double calculatedPrice = (unitPriceValue * quantityValue) + shippingValue;
@@ -45,7 +45,7 @@ public class OrderPage extends BaseClass {
 	
 	public Double getTotalPrice() {
 		//Converting the String value to Double value
-		double totalValue = actions.stringToDouble(getDriver(), totalPrice);
+		double totalValue = actions.stringToDouble(totalPrice);
 		return totalValue;
 	}
 	

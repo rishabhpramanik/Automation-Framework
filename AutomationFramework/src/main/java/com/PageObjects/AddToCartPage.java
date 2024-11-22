@@ -23,6 +23,9 @@ public class AddToCartPage extends BaseClass {
 	@FindBy(xpath = "//a[@title='Proceed to checkout']")
 	WebElement checkoutButton;
 	
+	@FindBy(xpath = "//h2[normalize-space()='Product successfully added to your shopping cart']")
+	WebElement cartMessage;
+	
 	public void select(WebElement element, String text) {
 		Select select = new Select(element);
 		select.selectByVisibleText(text);		
@@ -40,8 +43,8 @@ public class AddToCartPage extends BaseClass {
 		quantitySelection.sendKeys(quantity);		
 	}
 	
-	public void selectSize() {
-		select(sizeSelection, "M");
+	public void selectSize(String size) {
+		select(sizeSelection, size);
 	}
 	
 	public void clickAddToCart() {
@@ -51,5 +54,10 @@ public class AddToCartPage extends BaseClass {
 	public OrderPage clickCheckoutButton() {
 		checkoutButton.click();
 		return new OrderPage();
+	}
+
+	public boolean validateAddtoCart() {
+		boolean response = cartMessage.isDisplayed();
+		return response;
 	}
 }

@@ -60,10 +60,10 @@ public class ExcelLibrary{
 			sheet = workbook.getSheetAt(index);
 
 			//Pointing at the first row
-			row=sheet.getRow(0);
+			row = sheet.getRow(0);
 
 			//Iterating from the first row to the last row containing data
-			for(int i=0;i<row.getLastCellNum();i++){
+			for(int i = 0; i < row.getLastCellNum(); i++){
 				if(row.getCell(i).getStringCellValue().trim().equals(colName.trim()))
 					col_Num=i;
 			}
@@ -75,18 +75,21 @@ public class ExcelLibrary{
 			//Getting the required sheet using the index
 			sheet = workbook.getSheetAt(index);
 			row = sheet.getRow(rowNum-1);
-			if(row==null)
+			if(row == null)
 				return "";
 			cell = row.getCell(col_Num);
 
-			if(cell==null)
+			if(cell == null)
 				return "";
 
 			if(cell.getCellType().name().equals("STRING"))
 				return cell.getStringCellValue();
 			else if(cell.getCellType().name().equals("NUMERIC") || cell.getCellType().name().equals("FORMULA") ){
-
+				//If the cell value is numeric or formula
+				//Convert it into String
 				String cellText  = String.valueOf(cell.getNumericCellValue());
+				
+				//If the cell data is a date, then format the value and then convert it into String
 				if (DateUtil.isCellDateFormatted(cell)) {
 					// format in form of M/D/YY
 					double d = cell.getNumericCellValue();
@@ -101,12 +104,13 @@ public class ExcelLibrary{
 				}
 				return cellText;
 			}else if(cell.getCellType().name().equals("BLANK"))
+				//Return blank String if cell is blank
 				return ""; 
 			else 
 				return String.valueOf(cell.getBooleanCellValue());
 		}
 		catch(Exception e){
-
+			//Print message if row or column doesnot exist
 			e.printStackTrace();
 			return "row "+rowNum+" or column "+colName +" does not exist in xls";
 		}
@@ -114,17 +118,21 @@ public class ExcelLibrary{
 
 	//Returns the row count in a sheet
 	public int getRowCount(String sheetName){
+		//Get the sheet index
 		int index = workbook.getSheetIndex(sheetName);
+		
+		//If the sheet does not exist then index = -1 and no rows will be there
 		if(index==-1)
 			return 0;
 		else{
+			//If sheet is found then number of rows with data is returned
 			sheet = workbook.getSheetAt(index);
 			int number=sheet.getLastRowNum()+1;
 			return number;
 		}
 	}
 
-	// returns the data from a cell usign column number and row number
+	// Returns the data from a cell usign column number and row number
 	public String getCellData(String sheetName,int colNum,int rowNum){
 		try{
 			if(rowNum <=0)
