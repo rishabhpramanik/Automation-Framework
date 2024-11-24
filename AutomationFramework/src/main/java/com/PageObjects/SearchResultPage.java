@@ -4,9 +4,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ActionClass.ActionClass;
 import com.BaseClass.BaseClass;
 
 public class SearchResultPage extends BaseClass {
+	ActionClass action = new ActionClass();
+	
 	@FindBy(xpath = "(//a[@title='Printed Summer Dress'])[2]")
 	WebElement product;
 	
@@ -20,6 +23,7 @@ public class SearchResultPage extends BaseClass {
 	}
 	
 	public AddToCartPage clickOnProduct(){
+		action.scrollUntilElementInView(product, getDriver());
 		product.click();
 		return new AddToCartPage();
 	}

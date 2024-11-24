@@ -45,14 +45,15 @@ public class AddressPageTest extends BaseClass {
 		//Using hardcoded value to test the address page
 		searchResultPage = index.searchProduct("dresses");
 		addToCartPage = searchResultPage.clickOnProduct();
-		addToCartPage.enterQuantity("2");
+		
 		addToCartPage.selectSize("M");
+		addToCartPage.enterQuantity("2");		
+		
 		addToCartPage.clickAddToCart();
 		orderPage = addToCartPage.clickCheckoutButton();
 		loginPage = orderPage.clickProceedButton();
 		addressPage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"),addressPage);
-		addressPage.clickAddNewAddress();
-		
+				
 		//Adding new address
 		addressPage.addAddress(hashMapValue.get("FirstName"),
 				hashMapValue.get("LastName"),

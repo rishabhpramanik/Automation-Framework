@@ -5,10 +5,12 @@ import java.util.NoSuchElementException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionClass {
     // Using fluent wait to wait for the element to be interactable
@@ -62,5 +64,15 @@ public class ActionClass {
         } else {
             System.err.println("WebElement is null.");
         }
+    }
+    
+    public void waitUntilTheElementIsVisible(WebElement element, WebDriver driver) {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    	wait.until(ExpectedConditions.visibilityOf(element));
+    }
+    
+    public void scrollUntilElementInView(WebElement element, WebDriver driver) {
+    	Actions action = new Actions(driver);
+    	action.moveToElement(element);
     }
 }

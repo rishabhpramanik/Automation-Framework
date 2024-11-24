@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.ActionClass.ActionClass;
 import com.BaseClass.BaseClass;
 import com.Dataprovider.DataProviderClass;
 import com.PageObjects.AddToCartPage;
@@ -14,6 +15,7 @@ import com.PageObjects.SearchResultPage;
 import com.Utility.Logs;
 
 public class AddToCartTest extends BaseClass {
+	ActionClass action = new ActionClass();
 	private IndexPage index;
 	private SearchResultPage searchResultPage;
 	private AddToCartPage addToCartPage;
@@ -35,9 +37,12 @@ public class AddToCartTest extends BaseClass {
 		index= new IndexPage();
 		searchResultPage = index.searchProduct(productName);
 		addToCartPage = searchResultPage.clickOnProduct();
-		addToCartPage.enterQuantity(qty);
+		
 		addToCartPage.selectSize(size);
+		addToCartPage.enterQuantity(qty);
+		
 		addToCartPage.clickAddToCart();
+		
 		boolean result = addToCartPage.validateAddtoCart();
 		Assert.assertTrue(result);
 		Logs.endTestCase("addToCartTest");

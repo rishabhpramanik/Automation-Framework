@@ -119,10 +119,6 @@ public class AddressPage extends BaseClass {
 		return response;
 	}
 	
-	public void clickAddNewAddress() {
-		addNewAddressButton.click();
-	}
-	
 	public void addAddress(String fName, 
 			String lName,
 			String company,
@@ -133,17 +129,29 @@ public class AddressPage extends BaseClass {
 			String country,
 			String homeNumber,
 			String mobileNumber,
-			String aliasName) {
+			String aliasName) throws InterruptedException {
+		action.scrollUntilElementInView(firstnameField, getDriver());
 		firstnameField.sendKeys(fName);
+		action.scrollUntilElementInView(lastnameField, getDriver());
 		lastnameField.sendKeys(lName);
+		action.scrollUntilElementInView(companyField, getDriver());
 		companyField.sendKeys(company);
+		action.scrollUntilElementInView(addressField, getDriver());
 		addressField.sendKeys(address);
+		action.scrollUntilElementInView(cityField, getDriver());
 		cityField.sendKeys(city);
+		action.scrollUntilElementInView(stateField, getDriver());
 		action.selectByVisibleText(stateField, state);
+		Thread.sleep(2000);
+		action.scrollUntilElementInView(postcodeField, getDriver());
 		postcodeField.sendKeys(postCode);
-		action.selectByVisibleText(countryField, country);
+//		action.scrollUntilElementInView(countryField, getDriver());
+//		action.selectByVisibleText(countryField, country);
+		action.scrollUntilElementInView(phoneNumberField, getDriver());
 		phoneNumberField.sendKeys(homeNumber);
+		action.scrollUntilElementInView(mobilePhoneField, getDriver());
 		mobilePhoneField.sendKeys(mobileNumber);
+		action.scrollUntilElementInView(aliasField, getDriver());
 		aliasField.clear();
 		aliasField.sendKeys(aliasName);
 	}

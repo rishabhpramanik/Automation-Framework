@@ -13,7 +13,7 @@ public class OrderPage extends BaseClass {
 	@FindBy(xpath = "//li[@class='price special-price']")
 	WebElement unitPrice;
 	
-	@FindBy(xpath = "//input[@name='quantity_5_23_0_8026']")
+	@FindBy(xpath = "//input[@name='quantity_5_23_0_10797']")
 	WebElement quantity;
 	
 	@FindBy(id = "total_shipping")

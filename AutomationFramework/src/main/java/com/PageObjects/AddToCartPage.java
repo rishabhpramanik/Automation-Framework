@@ -33,6 +33,7 @@ public class AddToCartPage extends BaseClass {
 	}
 	
 	public void enterQuantity(String quantity) {
+		action.scrollUntilElementInView(quantitySelection, getDriver());
 		//Clearing the default value
 		quantitySelection.clear();
 		
@@ -41,10 +42,12 @@ public class AddToCartPage extends BaseClass {
 	}
 	
 	public void selectSize(String size) {
+		action.scrollUntilElementInView(sizeSelection, getDriver());
 		action.selectByVisibleText(sizeSelection, size);
 	}
 	
 	public void clickAddToCart() {
+		action.scrollUntilElementInView(addButton, getDriver());
 		addButton.click();
 	}
 	
@@ -54,6 +57,8 @@ public class AddToCartPage extends BaseClass {
 	}
 
 	public boolean validateAddtoCart() {
+		//Waiting for the element to be visible
+		action.waitUntilTheElementIsVisible(cartMessage, getDriver());
 		boolean response = cartMessage.isDisplayed();
 		return response;
 	}

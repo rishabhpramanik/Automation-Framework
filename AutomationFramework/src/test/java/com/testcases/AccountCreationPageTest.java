@@ -73,9 +73,9 @@ public class AccountCreationPageTest extends BaseClass {
 				hashMapValue.get("Country"),
 				hashMapValue.get("MobilePhone"));
 		homePage = accountCreationPage.validateRegistration();
-		String expectedUrl = "http://automationpractice.com/index.php?controller=my-account";
+		String expectedUrl = "http://www.automationpractice.pl/index.php?controller=my-account";
 		String homePageUrl = homePage.getHomePageUrl();
-		Assert.assertEquals(expectedUrl, homePageUrl);
+		Assert.assertEquals(homePageUrl, expectedUrl);
 		Logs.endTestCase("createAccountTest");
 	}
 }
