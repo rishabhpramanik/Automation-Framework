@@ -3,6 +3,7 @@ package com.ActionClass;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -67,12 +68,28 @@ public class ActionClass {
     }
     
     public void waitUntilTheElementIsVisible(WebElement element, WebDriver driver) {
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-    	wait.until(ExpectedConditions.visibilityOf(element));
+    	try {
+    		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        	wait.until(ExpectedConditions.visibilityOf(element));
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	
     }
     
     public void scrollUntilElementInView(WebElement element, WebDriver driver) {
-    	Actions action = new Actions(driver);
-    	action.moveToElement(element);
+    	try {
+    		Actions action = new Actions(driver);
+        	action.moveToElement(element);
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    }
+    
+    public String getHiddenElement(WebElement element, WebDriver driver) {
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+    	String text = (String) js.executeScript("return argument[0].text",element);
+    	return text;
     }
 }

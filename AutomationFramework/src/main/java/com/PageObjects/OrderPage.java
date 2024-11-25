@@ -11,41 +11,39 @@ public class OrderPage extends BaseClass {
 	ActionClass actions = new ActionClass();
 	
 	@FindBy(xpath = "//li[@class='price special-price']")
-	WebElement unitPrice;
+	private WebElement unitPrice;
 	
-	@FindBy(xpath = "//input[@name='quantity_5_23_0_10797']")
-	WebElement quantity;
+	@FindBy(id = "total_product")
+	private WebElement cartTotalField;
 	
 	@FindBy(id = "total_shipping")
-	WebElement shippingPrice;
+	private WebElement shippingPrice;
 	
 	@FindBy(id = "total_price")
-	WebElement totalPrice;
+	private WebElement totalPrice;
 	
 	@FindBy(xpath = "//a[@class='button btn btn-default standard-checkout button-medium']//span[contains(text(),'Proceed to checkout')]")
-	WebElement proceedToCheckoutButton;
+	private WebElement proceedToCheckoutButton;
 	
 	@FindBy(xpath = "//p[@class='fancybox-error']")
-	WebElement errorMessage;
+	private WebElement errorMessage;
 	
 	public OrderPage() {
 		PageFactory.initElements(getDriver(), this);
 	}
 	
 	public Double getCalculatedPrice() {
-		//Converting the String value to Double value
-		double unitPriceValue = actions.stringToDouble(unitPrice);
-		double quantityValue = actions.stringToDouble(quantity);
-		double shippingValue = actions.stringToDouble(shippingPrice);
-		
-		//Calculating the total price
-		double calculatedPrice = (unitPriceValue * quantityValue) + shippingValue;
+		//Calculated price is the product of unit price and quantity
+		double cartTotal = actions.stringToDouble(cartTotalField);
+		double shipping = actions.stringToDouble(shippingPrice);
+		double calculatedPrice = cartTotal + shipping;
 		return calculatedPrice;
 	}
 	
 	public Double getTotalPrice() {
 		//Converting the String value to Double value
 		double totalValue = actions.stringToDouble(totalPrice);
+		System.out.println(totalValue);
 		return totalValue;
 	}
 	

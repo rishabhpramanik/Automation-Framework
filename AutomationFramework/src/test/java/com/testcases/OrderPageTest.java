@@ -45,12 +45,12 @@ public class OrderPageTest extends BaseClass {
 		orderPage = addToCartPage.clickCheckoutButton();
 		
 		//Getting the price from the page and calculating it
-		double calculatedPrice = orderPage.getCalculatedPrice();
+		double expectedPrice = orderPage.getCalculatedPrice();
 		
 		//Getting the total price from the page
-		Double totalExpectedPrice = orderPage.getTotalPrice();
+		Double actualPrice = orderPage.getTotalPrice();
 		
-		Assert.assertEquals(calculatedPrice, totalExpectedPrice);
+		Assert.assertEquals(actualPrice, expectedPrice);
 		Logs.endTestCase("verifyTotalPrice");
 	}
 }
