@@ -1,8 +1,8 @@
-Description:-
+# Description:-
 My Shop is a demo ecommerce website which is used for testing. 
 This project is based on Java with Selenium and a framework is created to test the website.
 
-Testing Includes-
+# Testing Includes-
 Login test with valid credentials
 Searching the product
 Checking the product availability
@@ -11,13 +11,13 @@ Verifying the total price of the purchase
 Adding new address
 Creating new accounts using multiple data
 
-Documentation Included-
+# Documentation Included-
 Test cases
 Test data
 Test report
 Screenshots of failed test cases
 
-Approach-
+# Approach-
 In this project the Page Object Model is used where each page acts as a repository of Webelements located on the particular webpage.
 Using the POM makes the handling of code smoother and easy to use. The Webelements gets initialized while the page object is created which makes execution of script faster.
 
