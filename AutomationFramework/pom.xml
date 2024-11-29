@@ -12,7 +12,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.5.2</version>
 				<configuration>
-					<suiteXmlFiles>testng_all.xml</suiteXmlFiles>
+					<suiteXmlFiles>
+						<suiteXmlFile>${xmlFiles}</suiteXmlFile>
+					</suiteXmlFiles>
 				</configuration>
 			</plugin>
 
@@ -47,7 +49,7 @@
 							<includes>
 								<include>**/*</include>
 							</includes>
-						</fileset>						
+						</fileset>
 					</filesets>
 				</configuration>
 			</plugin>
