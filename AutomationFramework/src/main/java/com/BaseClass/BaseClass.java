@@ -16,6 +16,8 @@ import org.testng.annotations.BeforeSuite;
 
 import com.Utility.ReportManager;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class BaseClass {
 	public static Properties prop;
 	
@@ -66,10 +68,13 @@ public class BaseClass {
 		
 		//Setting up the driver based on parameter
 		if(browserName.equalsIgnoreCase("chrome")) {
+			WebDriverManager.chromedriver().setup();
 			driver.set(new ChromeDriver());
 		}else if(browserName.equalsIgnoreCase("edge")) {
+			WebDriverManager.edgedriver().setup();
 			driver.set(new EdgeDriver());
 		}else if(browserName.equalsIgnoreCase("firefox")) {
+			WebDriverManager.firefoxdriver().setup();
 			driver.set(new FirefoxDriver());
 		}
 		
