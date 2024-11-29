@@ -18,12 +18,14 @@
 				</configuration>
 			</plugin>
 
-			<!--https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+			<!--
+			https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-clean-plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.13.0</version>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.4.0</version>
 			</plugin>
+
 			<!--
 			https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-clean-plugin -->
 			<plugin>
