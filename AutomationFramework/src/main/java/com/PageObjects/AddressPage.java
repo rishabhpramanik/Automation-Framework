@@ -60,10 +60,12 @@ public class AddressPage extends BaseClass {
 	}
 	
 	public void setFirstName(String name) {
+		firstnameField.clear();
 		firstnameField.sendKeys(name);
 	}
 	
 	public void setLastname(String name) {
+		lastnameField.clear();
 		lastnameField.sendKeys(name);
 	}
 	
