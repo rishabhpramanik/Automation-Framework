@@ -29,7 +29,7 @@ public class BaseClass {
 		return driver.get();
 	}
 	
-	@BeforeSuite
+	@BeforeSuite(groups = {"Smoke", "Sanity", "Regression"})
 	public void loadConfig() {
 		/*
 		 * Setup the Extent Report to save the report
